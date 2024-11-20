@@ -1,7 +1,7 @@
 pipeline{
     agent {
       node {
-	label 'slave_1'
+	label 'slave-1'
     }
 }
 
@@ -75,9 +75,10 @@ pipeline{
         stage ('Tomcat Deployment') {
            steps {
              script {
-                 deploy adapters: [tomcat7(credentialsId: 'tomcat-credentials', path: '', url: 'http://18.223.156.182:8080')], contextPath: '/webapp-app', onFailure: false, war: 'webapp/target/webapp.war' 
+                 deploy adapters: [tomcat7(credentialsId: 'tomcat-credentials', path: '', url: 'http://13.232.135.68:8080')], contextPath: '/webapp-app', onFailure: false, war: 'webapp/target/webapp.war' 
                     }
                   }
+	
            }
          stage('post-build step') {
             steps {
